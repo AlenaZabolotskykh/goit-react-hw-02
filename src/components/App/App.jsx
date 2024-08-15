@@ -1,15 +1,8 @@
 import { useState } from "react";
 import Description from "../Description/Description";
-
+import Options from "../Options/Options";
+import Feedback from "../Feedback/Feedback";
 import "./App.css";
-
-function Options({ children, updateFeedback }) {
-  return (
-    <>
-      <button onClick={updateFeedback}>{children}</button>
-    </>
-  );
-}
 
 export default function App() {
   const [clicks, setClicks] = useState({
@@ -42,6 +35,7 @@ export default function App() {
       </Options>
       <Options updateFeedback={() => updateFeedback("bad")}>{"Bad"} </Options>
       <Options updateFeedback={resetFeedback}>{"Reset"} </Options>
+      <Feedback clicks={clicks} />
     </>
   );
 }

@@ -1,7 +1,7 @@
-export default function options() {
+export default function Options({ children, updateFeedback }) {
   return (
     <>
-      <button></button>
+      <button onClick={updateFeedback}>{children}</button>
     </>
   );
 }
