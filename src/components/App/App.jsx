@@ -2,6 +2,7 @@ import { useState } from "react";
 import Description from "../Description/Description";
 import Options from "../Options/Options";
 import Feedback from "../Feedback/Feedback";
+import Notification from "../Notification/Notification";
 import "./App.css";
 
 export default function App() {
@@ -26,6 +27,8 @@ export default function App() {
     });
   };
 
+  const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
+
   return (
     <>
       <Description />
@@ -34,8 +37,14 @@ export default function App() {
         {"Neutral"}
       </Options>
       <Options updateFeedback={() => updateFeedback("bad")}>{"Bad"} </Options>
-      <Options updateFeedback={resetFeedback}>{"Reset"} </Options>
-      <Feedback clicks={clicks} />
+      {totalFeedback > 0 && (
+        <Options updateFeedback={resetFeedback}>{"Reset"} </Options>
+      )}
+      {totalFeedback > 0 ? (
+        <Feedback clicks={clicks} totalFeedback={totalFeedback} />
+      ) : (
+        <Notification />
+      )}
     </>
   );
 }
