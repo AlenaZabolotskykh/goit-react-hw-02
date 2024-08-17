@@ -40,14 +40,11 @@ export default function App() {
   return (
     <>
       <Description />
-      <Options updateFeedback={() => updateFeedback("good")}> {"Good"}</Options>
-      <Options updateFeedback={() => updateFeedback("neutral")}>
-        {"Neutral"}
-      </Options>
-      <Options updateFeedback={() => updateFeedback("bad")}>{"Bad"} </Options>
-      {totalFeedback > 0 && (
-        <Options resetFeedback={resetFeedback}>{"Reset"} </Options>
-      )}
+      <Options
+        updateFeedback={updateFeedback}
+        resetFeedback={resetFeedback}
+        totalFeedback={totalFeedback}
+      />
       {totalFeedback > 0 ? (
         <Feedback
           clicks={clicks}
