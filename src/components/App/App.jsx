@@ -24,7 +24,7 @@ export default function App() {
 
   useEffect(() => {
     window.localStorage.setItem("all-clicks", JSON.stringify(clicks));
-  });
+  }, [clicks]);
 
   const resetFeedback = () => {
     setClicks({
@@ -46,7 +46,7 @@ export default function App() {
       </Options>
       <Options updateFeedback={() => updateFeedback("bad")}>{"Bad"} </Options>
       {totalFeedback > 0 && (
-        <Options updateFeedback={resetFeedback}>{"Reset"} </Options>
+        <Options resetFeedback={resetFeedback}>{"Reset"} </Options>
       )}
       {totalFeedback > 0 ? (
         <Feedback
